@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ClothesRUs.Models.Enums;
-using ClothesRUs.Models.PriceCalculators;
 
 namespace ClothesRUs.Models
 {
@@ -12,8 +10,8 @@ namespace ClothesRUs.Models
         private readonly Age _age;
         private readonly string _type;
 
-        private List<Size> Sizes { get; }
-        private List<Colour> Colours { get; }
+        public List<Size> Sizes { get; set; }
+        public List<Colour> Colours { get; set; }
 
         public Clothing()
         {
@@ -32,12 +30,12 @@ namespace ClothesRUs.Models
             List<Colour> colours) 
             : 
             base(
-                productId,  
                 name, 
                 description, 
                 price, 
                 images)
         {
+            Id = productId;
             _sex = sex;
             _age = age;
             _type = type;

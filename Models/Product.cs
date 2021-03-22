@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ClothesRUs.Models
 {
     public abstract class Product
-    {
-        public int ProductId { get; set; }
-        public string Name { get; set; }
+    { public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
         public List<Image> Images { get; set; }
@@ -16,9 +15,8 @@ namespace ClothesRUs.Models
         protected Product()
         { 
         }
-        protected Product(int productId, string name, string description, double price, List<Image> images)
+        protected Product(string name, string description, double price, List<Image> images)
         {
-            ProductId = productId;
             Name = name;
             Description = description;
             Price = price;

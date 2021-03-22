@@ -1,7 +1,8 @@
 ﻿namespace ClothesRUs.Models
 {
-    public class Image
+    public class Size
     {
         public int Id { get; set; }
+        public string ActualSize { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using System.Linq;
 using ClothesRUs.Contexts;
 using ClothesRUs.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +21,10 @@ namespace ClothesRUs.Controllers
         }
 
         [HttpGet]
-        public List<Clothing> GetClothes()
+        public IEnumerable<Clothing> GetClothes()
         {
-            List<Clothing> clothes = new List<Clothing>();
-            
+            List<Clothing> clothes = _clothingContext.Clothings.ToList();
+
             return clothes;
         }
     }

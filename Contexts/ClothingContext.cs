@@ -1,7 +1,5 @@
-﻿using System.IO;
-using ClothesRUs.Models;
+﻿using ClothesRUs.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace ClothesRUs.Contexts
 {
@@ -13,5 +11,7 @@ namespace ClothesRUs.Contexts
 
         public DbSet<Clothing> Clothings { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<Colour> Colours { get; set; }
     }
 }
