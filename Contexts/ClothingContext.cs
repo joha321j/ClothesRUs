@@ -8,10 +8,14 @@ namespace ClothesRUs.Contexts
         public ClothingContext(DbContextOptions<ClothingContext> options) : base(options)
         {
         }
+        
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
-        public DbSet<Clothing> Clothings { get; set; }
-        public DbSet<Image> Images { get; set; }
-        public DbSet<Size> Sizes { get; set; }
-        public DbSet<Colour> Colours { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<ProductImage>().ToTable("ProductImage");
+        }
     }
 }

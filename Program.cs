@@ -1,11 +1,11 @@
 using ClothesRUs.Contexts;
-using ClothesRUs.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using ClothesRUs.Data;
 
 namespace ClothesRUs
 {
@@ -23,7 +23,7 @@ namespace ClothesRUs
                 {
                     ClothingContext context = services.GetRequiredService<ClothingContext>();
                     context.Database.Migrate();
-                    SeedData.Initialize(services);
+                    DbInitializer.Initialize(context);
                 }
                 catch (Exception e)
                 {

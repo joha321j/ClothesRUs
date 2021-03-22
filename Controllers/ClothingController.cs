@@ -8,8 +8,8 @@ using Microsoft.Extensions.Logging;
 namespace ClothesRUs.Controllers
 {
     [ApiController]
-    [Route("clothing")]
-    public class ClothingController
+    [Route("api/[controller]")]
+    public class ClothingController : ControllerBase
     {
         private readonly ClothingContext _clothingContext;
         private readonly ILogger<ClothingController> _logger;
@@ -21,9 +21,9 @@ namespace ClothesRUs.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Clothing> GetClothes()
+        public IEnumerable<Product> GetClothes()
         {
-            List<Clothing> clothes = _clothingContext.Clothings.ToList();
+            List<Product> clothes = _clothingContext.Products.ToList();
 
             return clothes;
         }

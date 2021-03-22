@@ -1,6 +1,8 @@
+using System.Text.Json.Serialization;
 using ClothesRUs.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,13 +24,18 @@ namespace ClothesRUs
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
-            services.AddDbContext<ClothingContext>(
-                options => options.UseSqlite(Configuration.GetConnectionString("ProductCatalogContext")));
+            services.AddControllers().AddJsonOptions(
+                options => options.JsonSerializerOptions
+                    .ReferenceHandler = ReferenceHandler.Preserve);
+
+            services.AddMvc(options => options.Filters.Add(new RequireHttpsAttribute()));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ClothesRUs", Version = "v1" });
             });
+            
+            services.AddDbContext<ClothingContext>(
+                options => options.UseSqlite(Configuration.GetConnectionString("ProductCatalogContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,14 +3,16 @@ using System;
 using ClothesRUs.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClothesRUs.Migrations
 {
     [DbContext(typeof(ClothingContext))]
-    partial class ClothingContextModelSnapshot : ModelSnapshot
+    [Migration("20210322080533_WrapEnumsInClasses")]
+    partial class WrapEnumsInClasses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
